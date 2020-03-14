@@ -1,4 +1,7 @@
-(ns base58.core)
+(ns base58.core
+  "Base58 is a binary-to-text encoding algorithm that’s designed to encode a 
+   blob of arbitrary binary data into human readable text, much like the more 
+   well known Base64 algorithm.")
 
 (def ^:const alphabet "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz")
 
@@ -10,6 +13,7 @@
     :else (bigint (.getBytes s))))
 
 (defn encode
+  "Encode s to base58 text value."
   [s]
   (loop [data (decode_unsigned s)
          hash ""]
